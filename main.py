@@ -16,3 +16,6 @@ async def webhook(payload: dict):
         return {"message": "PR received"}
     
     return {"message": "ignored"}
+
+# GitHub PR open → POST /webhook → 
+# action check → PR details extract → confirm
