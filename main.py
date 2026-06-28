@@ -18,10 +18,15 @@ async def webhook(payload: dict):
         print(f"New PR #{pr_number} opened in {repo_name}")
         
         diff = get_pr_diff(repo_name, pr_number)
-        review = review_code(diff)
-        post_comment(repo_name, pr_number, review)
+        print(f"Diff fetched: {len(diff)} characters")  # add karo
         
-        return {"message": "PR received and commented"}
-    
+        review = review_code(diff)
+        print(f"Review generated: {review[:100]}")  # add karo
+        
+        result = post_comment(repo_name, pr_number, review)
+        print(f"Comment post status: {result}")  # add karo
+        
+        return {"message": "PR reviewed and commented"}
+        
     return {"message": "ignored"}
 
